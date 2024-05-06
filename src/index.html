@@ -19,7 +19,6 @@
                     </div>
                     <div class="">
                         <h2 class="font-bold text-lg">Hoàng Vũ</h2>
-                        <span class="text-sm text-gray-400 italic">11062003</span>
                     </div>
                 </div>
             </header>
@@ -30,35 +29,38 @@
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                           </svg>                          
-                        <div class="flex flex-col">
+                        <div class="timer flex flex-col close">
                             <span class="text-gray-400 text-sm">Time remaining</span>
-                            <span class="font-bold text-lg">14 : 44 : 00</span>
+                            <span class="time-text font-bold text-lg"></span>
+                        </div>
+                        <div class="start">
+                            <button class="bg-green-800 text-white px-5 py-1 cursor-pointer select-none rounded-full">Start</button>
                         </div>
                     </div>
-                    <button class="px-8 py-1 cursor-pointer rounded-lg bg-green-800 text-white">Submit</button>
+                    <button id="submit" class="px-8 py-1 cursor-pointer rounded-lg bg-green-800 text-white">Submit</button>
                 </div>
                 <!-- end time  -->
-                <div class="question my-10 flex max-md:flex-col">
+                <div class="question close mt-10 mb-4 flex max-md:flex-col">
                     <div class="basis-3/5 max-md:order-2">
-                        <h1>Question 1 of 10</h1>
-                        <span class="max-w-[80%]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, fugit!</span>
-                        <div class="answer">
-                            <ul class="grid mb-8 md:grid-cols-2 mt-8 gap-8 gap-x-3 max-w-[500px]">
-                                <li class="border-2 relative border-gray-300 rounded-lg font-semibold h-[40px] flex items-center justify-center">
+                        <h1 class="question-count mb-5 font-semibold">Question 1 of 10</h1>
+                        <span class="question-sentence max-w-[80%] h-20 italic">fugit!</span>
+                        <div class="">
+                            <ul class="answers grid mb-8 md:grid-cols-2 mt-8 gap-8 gap-x-3 max-w-[600px]">
+                                <li class="border-2 select-none cursor-pointer p-2 duration-300 relative border-gray-300 rounded-lg font-semibold flex items-center flex-1">
                                     <span class="absolute left-4 top-1/2 -translate-y-1/2 text-green-800 font-bold">A</span>
-                                    Đáp án A
+                                    <span class="answers-choose ml-10">Đáp án A</span>
                                 </li>
-                                <li class="border-2 relative border-gray-300 rounded-lg font-semibold h-[40px] flex items-center justify-center">
+                                <li class="border-2 select-none cursor-pointer p-2 duration-300 relative border-gray-300 rounded-lg font-semibold flex items-center flex-1">
                                     <span class="absolute left-4 top-1/2 -translate-y-1/2 text-green-800 font-bold">B</span>
-                                    Đáp án A
+                                    <span class="answers-choose ml-10">Đáp án A</span>
                                 </li>
-                                <li class="border-2 relative border-gray-300 rounded-lg font-semibold h-[40px] flex items-center justify-center">
+                                <li class="border-2 select-none cursor-pointer p-2 duration-300 relative border-gray-300 rounded-lg font-semibold flex items-center flex-1">
                                     <span class="absolute left-4 top-1/2 -translate-y-1/2 text-green-800 font-bold">C</span>
-                                    Đáp án A
+                                    <span class="answers-choose ml-10">Đáp án A</span>
                                 </li>
-                                <li class="border-2 relative border-gray-300 rounded-lg font-semibold h-[40px] flex items-center justify-center">
+                                <li class="border-2 select-none cursor-pointer p-2 duration-300 relative border-gray-300 rounded-lg font-semibold flex items-center flex-1">
                                     <span class="absolute left-4 top-1/2 -translate-y-1/2 text-green-800 font-bold">D</span>
-                                    Đáp án A
+                                    <span class="answers-choose ml-10">Đáp án A</span>
                                 </li>
                             </ul>
                         </div>
@@ -68,35 +70,25 @@
                         <div class="proccess relative w-full h-full">
                             <svg class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90">
                                 <circle class="translate-x-1/2 translate-y-1/2 fill-none stroke-gray-500 stroke-[10px]" r="70"></circle>
-                                <circle class="proccess-item translate-x-1/2 translate-y-1/2 fill-none stroke-gray-500 stroke-[10px]" r="70"></circle>
-                                <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl font-semibold">9/10</span>
+                                <circle class="proccess-item translate-x-1/2 translate-y-1/2 stroke-gray-500" r="70"></circle>
+                                <span class="proccess-text absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl font-semibold">9/10</span>
                             </svg>
-                           
                         </div>
                     </div>
+                    <!-- end proccess  -->
                 </div>
                 <!-- end question  -->
-                <div class="oder flex items-center justify-center">
-                    <button class="py-2 px-3 border-2 border-gray-600 font-semibold" id="pre">Pre</button>
-                    <ul class="list-order flex gap-6 mx-6 w-[620px] flex-nowrap overflow-x-auto overflow-hidden">
-                        <li class="item-order">1</li>
-                        <li class="item-order">2</li>
-                        <li class="item-order">3</li>
-                        <li class="item-order">4</li>
-                        <li class="item-order">5</li>
-                        <li class="item-order">6</li>
-                        <li class="item-order">7</li>
-                        <li class="item-order">8</li>
-                        <li class="item-order">9</li>
-                        <li class="item-order">10</li>
-                        <li class="item-order">10</li>
-                        <li class="item-order">10</li>
+                <div class="order close flex items-center justify-center">
+                    <button class="py-2 rounded-lg md:w-16 w-36 border-2 border-gray-600 font-semibold" id="pre">Pre</button>
+                    <ul class="orders flex gap-6 mx-6 max-w-[620px] flex-nowrap overflow-x-auto overflow-hidden">
+                        
                     </ul>
-                    <button class="py-2 px-3 border-2 border-gray-600 font-semibold" id="next">Next</button>
+                    <button class="py-2 rounded-lg md:w-16 w-36 border-2 border-gray-600 font-semibold" id="next">Next</button>
                 </div>
                 <!-- end order  -->
             </main>
         </div>
     </div>
+    <script src="./main.js"></script>
 </body>
 </html>

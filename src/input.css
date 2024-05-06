@@ -8,19 +8,50 @@ html{
 .proccess-item{
     stroke: green;
     stroke-dasharray: 130 9999;
+    stroke-width: 10px;
+    fill: none;
 }
+
 circle{
     stroke-linecap: round;
 }
 .item-order{
     @apply w-10 h-10 flex items-center justify-center border-[1px] border-gray-400 rounded-full flex-shrink-0 cursor-pointer select-none
 }
-.list-order::-webkit-scrollbar {
+.orders::-webkit-scrollbar {
     display: none;
   }
   
   /* Hide scrollbar for IE, Edge and Firefox */
-.list-order {
+.orders {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
+
+.active{
+    @apply border-2 border-gray-600
+}
+.answers li.active{
+    @apply bg-green-800;
+}
+.answers li.active span{
+    @apply text-white;
+}
+.selected{
+    @apply bg-green-800 text-white;
+}
+.close{
+    display: none;
+}
+.correct{
+    @apply bg-green-800 text-white
+}
+.false{
+    @apply bg-red-600 text-white
+}
+.correct span{
+    @apply  text-white
+}
+.false span{
+    @apply text-white
+}

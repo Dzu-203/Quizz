@@ -579,17 +579,36 @@ video {
   margin-right: 1.5rem;
 }
 
-.my-10 {
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
 }
 
 .mb-8 {
   margin-bottom: 2rem;
 }
 
+.ml-10 {
+  margin-left: 2.5rem;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
 .mt-8 {
   margin-top: 2rem;
+}
+
+.block {
+  display: block;
+}
+
+.inline {
+  display: inline;
 }
 
 .flex {
@@ -604,12 +623,12 @@ video {
   height: 3rem;
 }
 
-.h-6 {
-  height: 1.5rem;
+.h-20 {
+  height: 5rem;
 }
 
-.h-\[40px\] {
-  height: 40px;
+.h-6 {
+  height: 1.5rem;
 }
 
 .h-full {
@@ -624,44 +643,32 @@ video {
   width: 3rem;
 }
 
-.w-6 {
-  width: 1.5rem;
+.w-36 {
+  width: 9rem;
 }
 
-.w-\[600px\] {
-  width: 600px;
+.w-6 {
+  width: 1.5rem;
 }
 
 .w-full {
   width: 100%;
 }
 
-.w-\[700px\] {
-  width: 700px;
+.max-w-\[600px\] {
+  max-width: 600px;
 }
 
-.w-\[60px\] {
-  width: 60px;
-}
-
-.w-\[620px\] {
-  width: 620px;
-}
-
-.w-\[610px\] {
-  width: 610px;
-}
-
-.w-\[615px\] {
-  width: 615px;
-}
-
-.max-w-\[500px\] {
-  max-width: 500px;
+.max-w-\[620px\] {
+  max-width: 620px;
 }
 
 .max-w-\[80\%\] {
   max-width: 80%;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
 }
 
 .basis-2\/5 {
@@ -699,6 +706,12 @@ video {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.select-none {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .flex-col {
@@ -801,13 +814,17 @@ video {
      object-fit: cover;
 }
 
+.p-2 {
+  padding: 0.5rem;
+}
+
 .p-6 {
   padding: 1.5rem;
 }
 
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .px-8 {
@@ -887,6 +904,14 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
 html {
   font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
@@ -894,6 +919,8 @@ html {
 .proccess-item{
   stroke: green;
   stroke-dasharray: 130 9999;
+  stroke-width: 10px;
+  fill: none;
 }
 
 circle{
@@ -917,17 +944,68 @@ circle{
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
 }
 
-.list-order::-webkit-scrollbar {
+.orders::-webkit-scrollbar {
   display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 
-.list-order {
+.orders {
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+}
+
+.active {
+  border-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(75 85 99 / var(--tw-border-opacity));
+}
+
+.answers li.active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 101 52 / var(--tw-bg-opacity));
+}
+
+.answers li.active span {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.selected {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 101 52 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.close{
+  display: none;
+}
+
+.correct {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 101 52 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.false {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.correct span {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.false span {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 @media not all and (min-width: 768px) {
@@ -939,18 +1017,9 @@ circle{
     order: 2;
   }
 
-  .max-md\:my-12 {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-  }
-
   .max-md\:my-20 {
     margin-top: 5rem;
     margin-bottom: 5rem;
-  }
-
-  .max-md\:mt-12 {
-    margin-top: 3rem;
   }
 
   .max-md\:flex-col {
@@ -959,6 +1028,10 @@ circle{
 }
 
 @media (min-width: 768px) {
+  .md\:w-16 {
+    width: 4rem;
+  }
+
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
