@@ -140,7 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const questionSentence = document.querySelector(".question-sentence");
     const answerItem = document.querySelectorAll(".answers li");
     const answersChoose = document.querySelectorAll(".answers-choose");
-    const proccessItemFalse = document.querySelector('.proccess-item-false')
     const proccessItem = document.querySelector('.proccess-item')
     const proccessText = document.querySelector('.proccess-text')
     const prev = document.querySelector("#pre");
@@ -150,12 +149,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const submit = document.querySelector('#submit')
     const start = document.querySelector(".start");
     let orderItem = document.querySelectorAll(".orders li");
-    let listSubmit = [];
+    let listSubmit = new Array(questionsData.length).fill(-1);
     let listCorrect = [];
     let currentIndex = null;
-    let checkStart = false
     let checkFinish = false
     let countCorrect = 0
+    let checkTimeOut = false
+    let timer = null
     const quiz = {
         handleNext: function () {
             next.addEventListener("click", () => {
@@ -184,7 +184,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             })
         },
-        
         renderStart: function () {
             start.classList.add('close');
             order.classList.remove('close');
@@ -203,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
         handleTime: function (minutes, seconds) {
             let timerExpired = false;
             timeText.innerHTML = `${this.formatTime(minutes)} : ${this.formatTime(seconds)}`;
-            let timer = setInterval(() => {
+            timer = setInterval(() => {
                 if (seconds === 0 && minutes === 0) {
                     timerExpired = true;
                 } else {
@@ -216,11 +215,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 if (timerExpired) {
                     timeText.innerHTML = `Hết thời gian`;
+                    checkTimeOut = true
+                    submit.click()
                     clearInterval(timer);
                 } else {
                     timeText.innerHTML = `${this.formatTime(minutes)} : ${this.formatTime(seconds)}`;
                 }
-            }, 1000);
+            }, 10);
         },
         renderProccess: function () {
             proccessItem.style = `stroke-dasharray: ${0} 9999;`
@@ -279,15 +280,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 answerItem.forEach((item,index) => {
                     item.classList.remove('false')
                 })
-                answerItem[listCorrect[currentIndex]].classList.add('correct')
             }else{
                 answerItem.forEach((item,index) => {
                     item.classList.remove('correct')
                     item.classList.remove('false')
                 })
-                answerItem[listSubmit[currentIndex]].classList.add('false')
-                answerItem[listCorrect[currentIndex]].classList.add('correct')
+                if (listSubmit[currentIndex] != -1)
+                {
+                    
+                    answerItem[listSubmit[currentIndex]].classList.add('false')
+                    answerItem[listCorrect[currentIndex]].classList.add('correct')
+                }else{
+                    answerItem[listCorrect[currentIndex]].classList.add('correct')
+                }
             }
+            
         },
         handleAnswer: function () {
             answerItem.forEach((item, index) => {
@@ -304,12 +311,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             });
         },
+        
         handleSubmit: function (e) {
             submit.addEventListener('click', () => {
                 const processLength = listSubmit.filter((item) => item >= 0)
-                if (processLength.length < questionsData.length) {
-                    alert("Bạn chọn thiếu đáp án kìa vui lòng xem lại nhé !!")
-                } else {
+                if (processLength.length === questionsData.length || checkTimeOut) {
+                    orderItem[0].click()
+                    submit.style = 'display : none'
                     checkFinish = true
                     questionsData.forEach((item, index) => {
                         const result = answersData.find(
@@ -323,12 +331,17 @@ document.addEventListener("DOMContentLoaded", () => {
                             listCorrect[index] = item.answer.indexOf(result.answer)
                         }
                     })
-                    this.handleProccess(countCorrect)
+                    console.log(listCorrect)
+                    console.log(listSubmit)
+                    timeText.innerHTML = `Đã nộp bài. Đúng ${countCorrect} câu`;
+                    clearInterval(timer)
+                    this.handleProccess(countCorrect)         
+                } else {
+                    alert("Bạn chọn thiếu đáp án kìa vui lòng xem lại nhé !!")
                 }
 
             })
         },
-       
         render : function(){
             this.renderQuestions();
             this.renderProccess();

@@ -44,7 +44,7 @@ circle{
     display: none;
 }
 .correct{
-    @apply bg-green-800 text-white
+    @apply bg-green-500 text-white
 }
 .false{
     @apply bg-red-600 text-white
